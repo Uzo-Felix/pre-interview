@@ -1,9 +1,7 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { ThemeToggle } from './components/ThemeToggle';
-import { ArticleList } from './components/ArticleList';
-import { ArticleDetail } from './components/ArticleDetail';
+import { ArticleDetail, ArticleList, ThemeToggle } from './components/Index';
+
 
 function App() {
   return (
