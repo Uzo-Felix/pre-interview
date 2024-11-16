@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pre-interview/static/css/main.e8881cab.css",
+    "main.js": "/pre-interview/static/js/main.c4fd3a94.js",
+    "static/js/453.eaa9a79e.chunk.js": "/pre-interview/static/js/453.eaa9a79e.chunk.js",
+    "index.html": "/pre-interview/index.html",
+    "main.e8881cab.css.map": "/pre-interview/static/css/main.e8881cab.css.map",
+    "main.c4fd3a94.js.map": "/pre-interview/static/js/main.c4fd3a94.js.map",
+    "453.eaa9a79e.chunk.js.map": "/pre-interview/static/js/453.eaa9a79e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8881cab.css",
+    "static/js/main.c4fd3a94.js"
+  ]
+}
