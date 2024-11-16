@@ -1,16 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import {
-    Box,
-    Card,
-    CardContent,
-    TextField,
-    Select,
-    MenuItem,
-    FormControl,
-    InputLabel,
-    Typography,
-    IconButton,
-} from '@mui/material';
+import { useState, useEffect } from 'react';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -54,61 +42,67 @@ const ArticleList = () => {
     };
 
     return (
-        <Box sx={{ p: 3 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-                <Typography variant="h4">Статьи</Typography>
-                <IconButton onClick={toggleTheme}>
+        <div className="p-6">
+            <div className="flex justify-between items-center mb-6">
+                <h1 className="text-3xl font-bold">Статьи</h1>
+                <button
+                    onClick={toggleTheme}
+                    className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
                     {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton>
-            </Box>
+                </button>
+            </div>
 
-            <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-                <TextField
-                    label="Поиск"
+            <div className="flex gap-4 mb-6">
+                <input
+                    type="text"
+                    placeholder="Поиск"
                     value={searchTerm}
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                         filterArticles(e.target.value, category);
                     }}
+                    className="px-4 py-2 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-gray-800 dark:border-gray-700"
                 />
-                <FormControl sx={{ minWidth: 120 }}>
-                    <InputLabel>Категория</InputLabel>
-                    <Select
-                        value={category}
-                        label="Категория"
-                        onChange={(e) => {
-                            setCategory(e.target.value);
-                            filterArticles(searchTerm, e.target.value);
-                        }}
-                    >
-                        <MenuItem value="all">Все</MenuItem>
-                        <MenuItem value="Технологии">Технологии</MenuItem>
-                        <MenuItem value="Наука">Наука</MenuItem>
-                        <MenuItem value="Здоровье">Здоровье</MenuItem>
-                        <MenuItem value="Бизнес">Бизнес</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box>
+
+                <select
+                    value={category}
+                    onChange={(e) => {
+                        setCategory(e.target.value);
+                        filterArticles(searchTerm, e.target.value);
+                    }}
+                    className="px-4 py-2 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-gray-800 dark:border-gray-700"
+                >
+                    <option value="all">Все</option>
+                    <option value="Технологии">Технологии</option>
+                    <option value="Наука">Наука</option>
+                    <option value="Здоровье">Здоровье</option>
+                    <option value="Бизнес">Бизнес</option>
+                </select>
+            </div>
 
             <InfiniteScroll
                 dataLength={displayedArticles.length}
                 next={loadMore}
                 hasMore={displayedArticles.length < articles.length}
-                loader={<Typography>Загрузка...</Typography>}
+                loader={<p className="text-center py-4">Загрузка...</p>}
             >
-                {displayedArticles.map((article) => (
-                    <Card key={article.id} sx={{ mb: 2 }}>
-                        <CardContent>
-                            <Typography variant="h6">{article.title}</Typography>
-                            <Typography color="textSecondary">
+                <div className="space-y-4">
+                    {displayedArticles.map((article) => (
+                        <div
+                            key={article.id}
+                            className="p-6 rounded-lg shadow-md bg-white dark:bg-gray-800 transition-colors"
+                        >
+                            <h2 className="text-xl font-semibold mb-2 text-orange-300">{article.title}</h2>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                                 {article.category} | {article.author} | {new Date(article.date).toLocaleDateString('ru-RU')}
-                            </Typography>
-                            <Typography variant="body2">{article.description}</Typography>
-                        </CardContent>
-                    </Card>
-                ))}
+                            </p>
+                            <p className="text-gray-700 dark:text-gray-300">{article.description}</p>
+                        </div>
+                    ))}
+                </div>
             </InfiniteScroll>
-        </Box>
+        </div>
     );
 };
 
