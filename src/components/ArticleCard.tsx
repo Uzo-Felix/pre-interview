@@ -1,15 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Article } from '../data/articles';
 
 interface ArticleCardProps {
-  article: Article;
-  onClick: (id: number) => void;
-}
+    article: Article;
+    onArticleClick: (id: any) => void;
+  }
+  
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
+export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+  const navigate = useNavigate();
+
   return (
     <div 
-      onClick={() => onClick(article.id)}
+      onClick={() => navigate(`/article/${article.id}`)}
       className="p-4 border dark:border-gray-700 rounded-lg cursor-pointer hover:shadow-lg transition-shadow"
     >
       <h2 className="text-xl font-bold mb-2">{article.title}</h2>
