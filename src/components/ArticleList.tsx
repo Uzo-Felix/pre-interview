@@ -56,7 +56,7 @@ export const ArticleList: React.FC = () => {
           >
             <ArticleCard
               article={article}
-              onClick={(id) => console.log('Navigate to article', id)}
+              onArticleClick={(id) => console.log('Navigate to article', id)}
             />
           </div>
         ))}
